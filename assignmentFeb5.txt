@@ -1,0 +1,131 @@
+Q1. Explain Class and Object with respect to Object-Oriented Programming. Give a suitable example.
+Ans--> Class and Object are two fundamental concepts in Object-Oriented Programming (OOP).
+
+A class is a blueprint or template for creating objects. It defines the attributes and methods of an object, as well as the relationships between objects. A class can be considered as a blueprint for multiple objects with the same attributes and methods.
+
+An object is an instance of a class. It is a real-world entity that has attributes (data) and behaviors (methods). Objects can interact with each other by sending and receiving messages, and they can access the attributes and methods defined in their class.
+
+For example, let's consider a class Car. A Car object would have attributes such as make, model, year, and color, and behaviors such as start, accelerate, and stop. We could create multiple Car objects, each with its own specific values for the attributes, and each able to perform the behaviors defined in the class.
+
+class Car:
+    def __init__(self, make, model, year, color):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.color = color
+
+    def start(self):
+        print(f"{self.make} {self.model} started.")
+
+    def accelerate(self):
+        print(f"{self.make} {self.model} is accelerating.")
+
+    def stop(self):
+        print(f"{self.make} {self.model} stopped.")
+
+# Create objects of the Car class
+car1 = Car("Toyota", "Camry", 2020, "Black")
+car2 = Car("Honda", "Accord", 2019, "White")
+
+# Access the attributes of the objects
+print(car1.make, car1.model, car1.year, car1.color)
+print(car2.make, car2.model, car2.year, car2.color)
+
+# Call the methods of the objects
+car1.start()
+car1.accelerate()
+car1.stop()
+
+car2.start()
+car2.accelerate()
+car2.stop()
+
+Output:
+Toyota Camry 2020 Black
+Honda Accord 2019 White
+Toyota Camry started.
+Toyota Camry is accelerating.
+Toyota Camry stopped.
+Honda Accord started.
+Honda Accord is accelerating.
+Honda Accord stopped.
+
+
+Q2. Name the four pillars of OOPs.
+Ans--> The four pillars of Object-Oriented Programming (OOP) in Python are:
+
+Abstraction: Hiding the implementation details and exposing only the necessary information to the user. This allows the user to focus on what the object does rather than how it does it.
+
+Encapsulation: Wrapping up the data (attributes) and functions (methods) that operate on that data within a single unit or object. This helps to ensure the data is protected from outside interference and accidental corruption.
+
+Inheritance: The process of creating a new class based on an existing class, inheriting all its attributes and behaviors. This allows for code reuse and helps to reduce the amount of code that needs to be written.
+
+Polymorphism: The ability of an object to take on multiple forms. In Python, this can be achieved through method overloading and method overriding. Polymorphism allows objects of different classes to be used interchangeably, even if they have different implementations of the same method.
+These four pillars of OOP provide the foundation for creating maintainable and scalable software applications.
+
+Q3. Explain why the __init__() function is used. Give a suitable example.
+Ans--> The __init__ function is a special method in Python classes and it is used to initialize the attributes of an object when it is created. The __init__ method is automatically called when an object of the class is created, and it allows you to set the initial state of the object.
+The __init__ method is defined as follows:
+def __init__(self, *args, **kwargs):
+    # code to initialize the attributes of the object
+Example,
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+# Create a Person object
+person = Person("John", 30)
+
+# Access the attributes of the Person object
+print(person.name) # John
+print(person.age) # 30
+
+In this example, the Person class has an __init__ method that takes two parameters, name and age, and sets them as the attributes of the Person object. When a Person object is created, the __init__ method is automatically called and the name and age attributes are initialized with the values passed as arguments.
+
+Q4. Why self is used in OOPs?
+Ans--> In Object-Oriented Programming (OOP), the self keyword is used to refer to the instance of the object on which a method is being called. It is a convention to use self as the first parameter in the method definition.
+
+For example, consider the following Python class:
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        
+    def say_hello(self):
+        print("Hello, my name is {} and I am {} years old.".format(self.name, self.age))
+
+
+In this class, the __init__ method and the say_hello method both take self as the first parameter. This allows them to access and modify the attributes of the Person object, such as name and age.
+
+When a Person object is created and a method is called on that object, self refers to the instance of the object on which the method is being called. This is what allows the methods to access and modify the attributes of the object.
+
+Q5. What is inheritance? Give an example for each type of inheritance.
+Ans--> Inheritance is a mechanism in Object-Oriented Programming (OOP) that allows a new class to be defined that inherits properties and behavior from an existing class, called the parent or base class. The derived class is also known as the subclass or child class.
+There are several types of inheritance in OOP, including:
+Single Inheritance: In single inheritance, a subclass inherits properties and behavior from a single base class.
+For example:
+class Animal:
+    def __init__(self, name, species):
+        self.name = name
+        self.species = species
+        
+    def make_sound(self):
+        print("The animal makes a sound.")
+        
+class Dog(Animal):
+    def __init__(self, name, breed):
+        Animal.__init__(self, name, species="Dog")
+        self.breed = breed
+        
+    def make_sound(self):
+        print("The dog barks.")
+        
+dog = Dog("Max", "Labrador")
+dog.make_sound() # Output: "The dog barks."
+
+In this example, the Dog class inherits from the Animal class and can access its attributes and methods, such as name and make_sound. The Dog class can also override the make_sound method to define its own behavior.
+
+Multiple Inheritance: In multiple inheritance, a subclass inherits properties and behavior from multiple base classes. For example:
